@@ -3,6 +3,8 @@ local beltColorData = {
   ["transport-belt"] = {r = 0.98, g = 0.73, b = 0.0}, -- 250, 186, 0
   ["fast-transport-belt"] = {r = 0.98, g = 0.27, b = 0.06}, -- 250, 69, 15
   ["express-transport-belt"] = {r = 0.15, g = 0.67, b = 0.71}, -- 38, 171, 181
+  --space-age
+  ["turbo-transport-belt"] = {r = .549, g = .635, b = .063},
   --K2
   ["kr-advanced-transport-belt"] = {r = 0.13, g = 0.92, b = 0.09}, -- 34, 235, 23
   ["kr-superior-transport-belt"] = {r = 0.82, g = 0.004, b = 0.97}, -- 210, 1, 247
@@ -16,11 +18,11 @@ local beltColorData = {
   ["5d-transport-belt-10"] = {r = 0.44, g = 0.45, b = 1}, -- 111, 114, 255
   --Bob's
   ["basic-transport-belt"] = {r = 0.46, g = 0.47, b = 0.47}, -- 118, 120, 120
-  ["turbo-transport-belt"] = {r = 0.97, g = 0.07, b = 1.0}, -- 247, 18, 255
+  --["turbo-transport-belt"] = {r = 0.97, g = 0.07, b = 1.0}, -- 247, 18, 255  --someone will tell me if this is missing :D
   ["ultimate-transport-belt"] = {r = 0.07, g = 1.0, b = 0.62}, -- 18, 255, 158
   --RandomFactorioThings/PlutoniumEnergy
   ["nuclear-transport-belt"] = {r = 0.0, g = 1, b = 0.0}, -- 0, 255, 0
-  ["plutonium-transport-belt"] = {r = 0.0, g = 1, b = 0.91} -- 0, 255, 231
+  ["plutonium-transport-belt"] = {r = 0.0, g = 1, b = 0.91}, -- 0, 255, 231
 }
 
 local function changeColor(belt, percent)
@@ -130,7 +132,7 @@ if settings.startup["Use-Mod-Color-for-pipes"].value then
 		v.friendly_map_color = {r = 0.20, g = 0.05, b = 0.40} -- 51, 13, 102
 	end
 	for _, v in pairs(data.raw["pipe-to-ground"]) do
-		v.friendly_map_color = {r = 0.35, g = 0.15, b = 0.62} -- 89, 38, 158
+		v.friendly_map_color = {r = 0.35*.8, g = 0.15*.8, b = 0.62*.8} -- 89, 38, 158
 	end
 end
 
@@ -141,6 +143,10 @@ if settings.startup["Use-Mod-Color-for-heat-pipes"].value then
 end
 
 for _, v in pairs(data.raw["reactor"]) do
+	v.friendly_map_color = {r = 0.16, g = 0.73, b = 0.15} -- 41, 186, 37
+end
+
+for _, v in pairs(data.raw["fusion-reactor"]) do
 	v.friendly_map_color = {r = 0.16, g = 0.73, b = 0.15} -- 41, 186, 37
 end
 
@@ -165,6 +171,10 @@ for k, v in pairs(data.raw["generator"]) do
 	end
 end
 
+for k, v in pairs(data.raw["fusion-generator"]) do
+	v.friendly_map_color = {r = 0.0, g = 0.35, b = 0.15} -- 0, 89, 38
+end
+
 --changes color of radars
 for _, v in pairs(data.raw["radar"]) do
 	v.friendly_map_color = {r = 0.49, g = 0.91, b = 0.75} -- 124, 232, 192
@@ -186,11 +196,28 @@ data.raw["unit-spawner"]["biter-spawner"].enemy_map_color = {r = 1.0, g = 0.10, 
 data.raw["unit-spawner"]["spitter-spawner"].enemy_map_color = {r = 0.76, g = 0.10, b = 0.16} -- 195, 25, 40
 --spitters
 
+data.raw["unit-spawner"]["gleba-spawner"].enemy_map_color = {r = 0.76, g = 0.10, b = 0.16} -- 195, 25, 40
+data.raw["unit-spawner"]["gleba-spawner-small"].enemy_map_color = {r = 0.76, g = 0.10, b = 0.16} -- 195, 25, 40
+
 for k,v in pairs(data.raw["unit"]) do
 	if k:find("biter") then
-			v.enemy_map_color = {r = 1.0, g = 0.33, b = 0.22} -- 255, 85, 55
+		v.enemy_map_color = {r = 1.0, g = 0.33, b = 0.22} -- 255, 85, 55
 	elseif k:find("spitter") then
-			v.enemy_map_color = {r = 0.76, g = 0.22, b = 0.16} -- 195, 55, 40
+		v.enemy_map_color = {r = 0.76, g = 0.22, b = 0.16} -- 195, 55, 40
+  elseif k:find("pentapod") then
+		v.enemy_map_color = {r = 0.76, g = 0.22, b = 0.16} -- 195, 55, 40
+	end
+end
+
+for k,v in pairs(data.raw["spider-unit"]) do
+	if k:find("strafer") then
+    v.enemy_map_color = {r = 0.76, g = 0.22, b = 0.16} -- 195, 55, 40
+	end
+end
+
+for k,v in pairs(data.raw["spider-leg"]) do
+	if k:find("strafer") then
+    v.enemy_map_color = {r = 0.76, g = 0.22, b = 0.16} -- 195, 55, 40
 	end
 end
 
