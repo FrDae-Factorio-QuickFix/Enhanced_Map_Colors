@@ -146,10 +146,6 @@ for _, v in pairs(data.raw["reactor"]) do
 	v.friendly_map_color = {r = 0.16, g = 0.73, b = 0.15} -- 41, 186, 37
 end
 
-for _, v in pairs(data.raw["fusion-reactor"]) do
-	v.friendly_map_color = {r = 0.16, g = 0.73, b = 0.15} -- 41, 186, 37
-end
-
 --data.raw["mining-drill"]["burner-mining-drill"].map_color = {r = 0.0, g = 0.37, b = 0.08} -- 0, 95, 20
 --data.raw["mining-drill"]["electric-mining-drill"].map_color = {r = 0.0, g = 0.37, b = 0.08} -- 74, 23, 143
 
@@ -171,10 +167,6 @@ for k, v in pairs(data.raw["generator"]) do
 	end
 end
 
-for k, v in pairs(data.raw["fusion-generator"]) do
-	v.friendly_map_color = {r = 0.0, g = 0.35, b = 0.15} -- 0, 89, 38
-end
-
 --changes color of radars
 for _, v in pairs(data.raw["radar"]) do
 	v.friendly_map_color = {r = 0.49, g = 0.91, b = 0.75} -- 124, 232, 192
@@ -187,17 +179,31 @@ if settings.startup["Use-Mod-Color-for-roboports"].value then
 	end
 end
 
-
-
-
 data.raw["unit-spawner"]["biter-spawner"].enemy_map_color = {r = 1.0, g = 0.10, b = 0.10} -- 255, 25, 25
 --biters
 
 data.raw["unit-spawner"]["spitter-spawner"].enemy_map_color = {r = 0.76, g = 0.10, b = 0.16} -- 195, 25, 40
 --spitters
 
-data.raw["unit-spawner"]["gleba-spawner"].enemy_map_color = {r = 0.76, g = 0.10, b = 0.16} -- 195, 25, 40
-data.raw["unit-spawner"]["gleba-spawner-small"].enemy_map_color = {r = 0.76, g = 0.10, b = 0.16} -- 195, 25, 40
+if mods["space-age"] then
+  data.raw["unit-spawner"]["gleba-spawner"].enemy_map_color = {r = 0.76, g = 0.10, b = 0.16} -- 195, 25, 40
+  data.raw["unit-spawner"]["gleba-spawner-small"].enemy_map_color = {r = 0.76, g = 0.10, b = 0.16} -- 195, 25, 40
+
+  for _, v in pairs(data.raw["fusion-reactor"]) do
+    v.friendly_map_color = {r = 0.16, g = 0.73, b = 0.15} -- 41, 186, 37
+  end
+
+  for k, v in pairs(data.raw["fusion-generator"]) do
+    v.friendly_map_color = {r = 0.0, g = 0.35, b = 0.15} -- 0, 89, 38
+  end
+
+  for k,v in pairs(data.raw["spider-unit"]) do
+    if k:find("strafer") then
+      v.enemy_map_color = {r = 0.76, g = 0.22, b = 0.16} -- 195, 55, 40
+    end
+  end
+
+end
 
 for k,v in pairs(data.raw["unit"]) do
 	if k:find("biter") then
@@ -206,12 +212,6 @@ for k,v in pairs(data.raw["unit"]) do
 		v.enemy_map_color = {r = 0.76, g = 0.22, b = 0.16} -- 195, 55, 40
   elseif k:find("pentapod") then
 		v.enemy_map_color = {r = 0.76, g = 0.22, b = 0.16} -- 195, 55, 40
-	end
-end
-
-for k,v in pairs(data.raw["spider-unit"]) do
-	if k:find("strafer") then
-    v.enemy_map_color = {r = 0.76, g = 0.22, b = 0.16} -- 195, 55, 40
 	end
 end
 
