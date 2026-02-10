@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.5.8
+Date: 14/11/2024
+  Changes:
+    - space age compatibilty
+    - fix issues with pressing "n". genuinely no idea what the gui did in the past.
+---------------------------------------------------------------------------------------------------
 Version: 1.5.7
 Date: 25/10/2024
   Changes:

@@ -1,6 +1,7 @@
 --GUI
 
 function spriteCheck(guiLeft, spritePath)
+	game.print(spritePath)
 	if guiLeft.gui.is_valid_sprite_path(spritePath) then
 		return spritePath
 	else
@@ -39,7 +40,7 @@ function legendDropdown(guiLeft)
 					spriteCheck(guiLeft,"entity/express-transport-belt"),
 					"map_color_graphic_express")
 	end
-	for modName,_ in pairs(game.active_mods) do
+	for modName,_ in pairs(script.active_mods) do
 		if modName == "Visible_Bots" then
 			if tech["construction-robotics"] and tech["construction-robotics"].researched then
 				addRow(table,
