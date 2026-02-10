@@ -9,7 +9,7 @@ local function color_graphics(posX, posY)
     -- left_monolith_border = 0,
 
     -- monolith_image = {
-      filename = "__Enhanced_Map_Colors__/graphics/colors.png",
+      filename = "__Wr_Enhanced_Map_Colors__/graphics/colors.png",
       priority = "extra-high-no-scale",
       width = 12,
       height = 8,
@@ -27,7 +27,7 @@ local function color_graphics1(posX, posY)
     -- left_monolith_border = 0,
 
     -- monolith_image = {
-      filename = "__Enhanced_Map_Colors__/graphics/colors1.png",
+      filename = "__Wr_Enhanced_Map_Colors__/graphics/colors1.png",
       priority = "extra-high-no-scale",
       width = 12,
       height = 8,
